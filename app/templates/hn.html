@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for article_type in articles.keys() %}
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Hacker News - {{ article_type}} heading</div>  
+        <ul class="list-group">
+            {% for article_details in articles[article_type] %}
+                {% if 'url' in article_details.keys() %}
+                    <a href=" {{ article_details['url'] }}" class="list-group-item">
+                        <p>{{ article_details['title'] }}</p>
+                    </a>
+                {% else %}
+                    <a href="#" class="list-group-item disabled">
+                        <p>{{ article_details['title'] }}</p>
+                        <p>{{ article_details['text']}}</p>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div>
+{% endblock %}

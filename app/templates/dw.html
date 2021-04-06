@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for article_type in articles.keys() %}
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Deutsche Welle - {{ article_type}} heading</div>  
+        <ul class="list-group">
+            {% for article_details in articles[article_type] %}
+                <a href=" {{ article_details['url'] }}" class="list-group-item">
+                    <p><b>{{ article_details['title'] }}</b></p>
+                    <p>{{ article_details['description'] }}</p>
+                </a>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    </div>
+{% endblock %}
